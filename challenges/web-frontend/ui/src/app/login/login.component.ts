@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
   passwordMissingInput = ''
   loginError = ''
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +24,14 @@ export class LoginComponent implements OnInit {
           this.passwordMissingInput = this.password ? '' : 'Password is required';
           console.log(`${this.email}: ${this.password}`);
 
+          this.authService.login('authentication', {email: this.email, password: this.password}).subscribe(auth => {
+            if(auth?.token) {
+              this.router.navigate(['auctions'])
+            } else {
+              this.loginError = 'Login failed'
+              return;
+            }
+          });
         return;
     }
 }
