@@ -41,3 +41,6 @@ General Hints:
 Please send the link to the forked repo to coding-challenge@caronsale.de.
 
 If you have any questions, feel free to contact us via <coding-challenge@caronsale.de>
+
+https://api-core-dev.caronsale.de/api/v1​/public​/preview​/auctions
+https://api-core-dev.caronsale.de/api/v1/public/preview/auctions

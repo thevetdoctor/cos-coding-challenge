@@ -12,7 +12,7 @@ Please fulfill the following tasks (according to the description above):
 0. Fork the repo
 1. Install all Node.js dependencies for the project
 2. Implement the ICarOnSaleClient interface in a class with method stubs (no functionality) 
-3. Implement Mocha/Chai component tests in the ``/CarOnSaleClient/classes`` directory that test the desired behavior (Tests should be run when executing ``npm test``)
+3. Implement Mocha/Chai component tests in the ``/CarOnSaleClient/classes`` directory that test the desired behavior (Tests should be run when executing ``npm test``) 
 4. Implement the actual service to retrieve the list of running auctions (by using the CarOnSale RESTful API, see Swagger documentation)
 5. Come up with an interface definition that you can use to access the response objects of a CarOnSale API call (see TODO tag in `ICarOnSaleClient` and check the Swagger documentation for the response objects).
 6. Register your service to the dependency injection container in ``main.ts``
