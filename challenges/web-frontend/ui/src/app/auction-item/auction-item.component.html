@@ -1,0 +1,25 @@
+<!-- <p>auction-item works!</p> -->
+<div>
+    <label class="label">
+        {{ auction.label }}
+    </label>
+    <img src="{{ auction.associatedVehicle.vehicleImages[0].url}}"/>
+    <p>
+        EZ: {{ auction.associatedVehicle.ez }}
+    </p>
+    <p>
+        Mileage: {{ auction.associatedVehicle.mileageInKm }}
+    </p>
+    <p>
+        Fuel Type: {{ auction.associatedVehicle.fuelType }}
+    </p>
+    <p>
+        Transmission: {{ auction.associatedVehicle.transmission }}
+    </p>
+    <p>
+        Current Highest Bid (Euro): {{ auction.currentHighestBidValue }}
+    </p>
+    <p>
+        Time left: {{ timeLeft }}
+    </p>
+</div>

@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AuctionsComponent } from './auctions/auctions.component';
+import { AuctionItemComponent } from './auction-item/auction-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AuctionsComponent
+    AuctionsComponent,
+    AuctionItemComponent
   ],
   imports: [
     BrowserModule,

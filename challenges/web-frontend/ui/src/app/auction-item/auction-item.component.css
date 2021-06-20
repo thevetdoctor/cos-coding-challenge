@@ -1,0 +1,30 @@
+* {
+    padding: 0;
+    background-color:rgb(117, 23, 23);
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1.3em;
+    margin-bottom: 0.2em;
+}
+
+img {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    align-self: center;
+}
+
+div {
+    padding: 1em;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+p {
+    font-size: 0.8em;
+}
+
+.label {
+    margin-bottom: 1em;
+}
