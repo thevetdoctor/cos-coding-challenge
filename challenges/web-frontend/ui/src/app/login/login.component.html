@@ -1,0 +1,26 @@
+<div>
+    <h2>Login</h2>
+    <p>{{ loginError }}</p>
+    <div>
+        <label>Email</label><br />
+        <input
+        type="text"
+        [(ngModel)]="email"
+        />
+    </div>
+    <p>{{ emailMissingInput }}</p>
+    <div>
+        <label>Password</label><br />
+        <input
+        type="password"
+        [(ngModel)]="password"
+        />
+    </div>
+    <p>{{ passwordMissingInput }}</p>
+    <div>
+        <input
+            type="submit"
+            (click)="onSubmit()"
+        />
+    </div>
+</div>
