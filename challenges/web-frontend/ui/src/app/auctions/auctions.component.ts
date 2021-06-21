@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { data } from '../data';
+import { AuctionService } from '../auction.service';
 import { Auction } from '../types/auction';
 
 @Component({
@@ -7,14 +7,24 @@ import { Auction } from '../types/auction';
   templateUrl: './auctions.component.html',
   styleUrls: ['./auctions.component.css']
 })
+
 export class AuctionsComponent implements OnInit {
   auctions: Auction[] = [];
+  auctionsUrl:string = 'public/preview/auctions';
+  getAuctionsError = ''
 
-  constructor() { }
+  constructor(private auctionService: AuctionService) { }
 
   ngOnInit(): void {
-    this.auctions = data;
-    console.log(this.auctions);
+       this.auctionService.getAuctions(this.auctionsUrl).subscribe(auctions => {
+      // console.log(auctions);
+      if(auctions) {
+        this.auctions = auctions;
+      } else {
+        this.getAuctionsError = 'Auctions not found'
+      }
+      return;
+    });
   }
 
 }

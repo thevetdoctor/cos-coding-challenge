@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError } from 'rxjs/operators'
+import { baseUrl } from './utils';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -13,10 +14,10 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl:string = 'https://api-core-dev.caronsale.de/api/v1'
+  baseUrl:string = baseUrl;
   
   handleError(error: HttpErrorResponse){
-    console.log(error.message);
+    console.error(error.message);
     return error.message;
     }
 
