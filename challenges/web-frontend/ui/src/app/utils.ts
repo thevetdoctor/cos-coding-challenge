@@ -7,3 +7,5 @@ export const timeFormat = (time: number) => {
 }
 
 export const baseUrl = 'https://api-core-dev.caronsale.de/api/v1';
+
+export const store: any = {}

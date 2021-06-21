@@ -2,6 +2,7 @@
     font-size: 1.1em;
     display: flex;
     flex-flow: column;
+    font-family: 'Raleway', sans-serif;
 }
  
 h2 {

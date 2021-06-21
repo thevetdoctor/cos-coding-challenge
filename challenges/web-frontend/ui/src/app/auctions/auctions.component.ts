@@ -17,11 +17,12 @@ export class AuctionsComponent implements OnInit {
 
   ngOnInit(): void {
        this.auctionService.getAuctions(this.auctionsUrl).subscribe(auctions => {
-      // console.log(auctions);
-      if(auctions) {
+      // console.log(Array.isArray(auctions));
+      if(Array.isArray(auctions)) {
         this.auctions = auctions;
       } else {
-        this.getAuctionsError = 'Auctions not found'
+        // console.log(auctions);
+        this.getAuctionsError = 'Auctions not found, try again'
       }
       return;
     });
