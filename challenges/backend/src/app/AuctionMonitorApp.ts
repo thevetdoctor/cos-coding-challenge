@@ -19,5 +19,10 @@ export class AuctionMonitorApp {
         // TODO: Retrieve auctions and display aggregated information (see README.md)
         this.car_on_sale_client.getRunningAuctions();
     }
-
+    
+    // Declare a 'test' method to utilise the carOnSaleClient API service for testing purpose
+    public async test(): Promise<Record<any, any>> {
+        return this.car_on_sale_client.getRunningAuctions();
+        
+    }
 }

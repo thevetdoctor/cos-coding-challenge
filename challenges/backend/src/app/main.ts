@@ -23,7 +23,9 @@ container.bind<ICarOnSaleClient>(DependencyIdentifier.CAR_ON_SALE_CLIENT).to(Car
 /*
  * Inject all dependencies in the application & retrieve application instance.
  */
-const app = container.resolve(AuctionMonitorApp);
+
+// Here an 'export is added to make the app available in the test file'
+export const app = container.resolve(AuctionMonitorApp);
 
 /*
  * Start the application
