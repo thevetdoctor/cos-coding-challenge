@@ -4,7 +4,7 @@ import { expect } from 'chai';
 
 describe('Sample test', () => {
     it('valid URL should return a response with status code of 200', async() => {
-        const res = await request(server).get('/auctions');
+        const res = await request(server).get('/');
         console.log(res.status);
         expect(res.status).equal(200);
     });

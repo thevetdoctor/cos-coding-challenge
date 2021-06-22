@@ -1,4 +1,4 @@
-import { IAuction, ICarOnSaleClient } from "../interface/ICarOnSaleClient";
+import { IRunningAuction, ICarOnSaleClient } from "../interface/ICarOnSaleClient";
 import {injectable} from "inversify";
 import "reflect-metadata";
 import axios from 'axios';
@@ -11,11 +11,8 @@ export class CarOnSaleClient implements ICarOnSaleClient {
 
     public constructor() {
     }
-    auctions = []
 
-    public getRunningAuctions(): Promise<IAuction>[] {
-        // console.log(this.auctions);
-        // return this.auctions;
+    public async getRunningAuctions(): Promise<Promise<IRunningAuction>[] | Record<any, any>> {
 
         const userId = 'salesman@random.com';
         const token = process.env.TEST_TOKEN;
@@ -44,8 +41,9 @@ export class CarOnSaleClient implements ICarOnSaleClient {
                 return {success: false, error: e.message};
             }
         }
-        console.log(fetchByAxios());
-        return [];
+        const result =  await fetchByAxios();
+        console.log(result);
+        return result;
     }
 
 }
