@@ -6,6 +6,4 @@ export const timeFormat = (time: number) => {
     return `${hour}h:${minutes}m:${seconds}s`;
 }
 
-export const baseUrl = 'https://api-core-dev.caronsale.de/api/v1';
-
-export const store: any = {}
+export const baseUrl = 'https://api-core-dev.caronsale.de/api';

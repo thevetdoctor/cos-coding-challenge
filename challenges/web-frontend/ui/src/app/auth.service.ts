@@ -25,7 +25,7 @@ export class AuthService {
 
     login(urlString:string, loginDetails: any):Observable<any> {
 
-      return this.http.put(`${this.baseUrl}/${urlString}/${loginDetails.email}`, loginDetails, httpOptions)
+      return this.http.put(`${this.baseUrl}/v1/${urlString}/${loginDetails.email}`, loginDetails, httpOptions)
                       .pipe(catchError(this.handleError));
     }
 }

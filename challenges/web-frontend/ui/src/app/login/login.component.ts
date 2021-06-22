@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
 
           this.authService.login('authentication', {email: this.email, password: this.password}).subscribe(auth => {
             if(auth?.token) {
+              localStorage.setItem('userId', this.email);
+              localStorage.setItem('authtoken', auth.token);
               this.router.navigate(['auctions'])
             } else {
               this.loginError = 'Login failed'
