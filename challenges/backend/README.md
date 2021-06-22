@@ -30,3 +30,9 @@ Additional Hints:
  * This is not a production-ready code, so, feel free to improve it ;)
  
 If you have any questions, feel free to contact us via <coding-challenge@caronsale.de>.
+
+REST API endpoints
+
+https://api-core-dev.caronsale.de/api/v1/public/preview/auctions
+https://api-core-dev.caronsale.de/api/v1/authentication/{userMailId}
+https://api-core-dev.caronsale.de/api/v2/auction/buyer/

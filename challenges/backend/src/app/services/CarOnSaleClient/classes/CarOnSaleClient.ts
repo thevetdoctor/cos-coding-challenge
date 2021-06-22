@@ -1,6 +1,10 @@
 import { IAuction, ICarOnSaleClient } from "../interface/ICarOnSaleClient";
 import {injectable} from "inversify";
 import "reflect-metadata";
+import axios from 'axios';
+import { config } from 'dotenv'
+
+config();
 
 @injectable()
 export class CarOnSaleClient implements ICarOnSaleClient {
@@ -10,8 +14,38 @@ export class CarOnSaleClient implements ICarOnSaleClient {
     auctions = []
 
     public getRunningAuctions(): Promise<IAuction>[] {
-        console.log(this.auctions);
-        return this.auctions;
+        // console.log(this.auctions);
+        // return this.auctions;
+
+        const userId = 'salesman@random.com';
+        const token = process.env.TEST_TOKEN;
+    
+        const apiHeaders = {
+            'Content-Type': 'application/json',
+            'userId': `${userId}`,
+            'authtoken': `${token}`
+        };
+
+        const url = 'https://api-core-dev.caronsale.de/api/v2/auction/buyer/'
+        const fetchByAxios = async() => {
+
+            try {
+                const apiResponse = await axios.get(url, {headers: apiHeaders})
+                                               .then(res => res)
+                                               .catch(err => err.message);
+                if(apiResponse.data) {
+                    // console.log(apiResponse)
+                    return {success: true, count: apiResponse.data.items.length, auctions: apiResponse.data.items};
+                } else {
+                    // console.log(apiResponse)
+                    return {success: false, error: apiResponse};
+                }
+            } catch(e) {
+                return {success: false, error: e.message};
+            }
+        }
+        console.log(fetchByAxios());
+        return [];
     }
 
 }
