@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { StateService } from './state.service';
 
 @Component({
   selector: 'app-root',
@@ -8,23 +10,28 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ui';
   userID:string = window.localStorage.getItem('userId') || '';
-  userEmail:string = '';
+  private appSubscription: Subscription;
 
-  constructor() { }
-  
-  ngOnInit(): void {
-    this.userID = window.localStorage.getItem('userId') || '';
-    console.log(this.userID);
+  constructor(private state: StateService) { 
+    this.appSubscription = this.state.getUpdate().subscribe(message => {
+      console.log('message: ', message);
+      this.userID = message.text;
+    })
   }
+  
+
+    ngOnInit(): void {
+      this.userID = window.localStorage.getItem('userId') || '';
+      console.log(this.userID);
+    }
+  
+    ngOnDestroy(): void {
+      console.log('unsubscribe from Subscription');
+      this.appSubscription.unsubscribe();
+    }
 
     clearCache() {
       window.localStorage.clear();
       this.userID = '';
-    }
-
-    onUpdateUserId(userID:any): void {
-      this.userEmail = userID;
-      this.ngOnInit();
-      console.log(this.userEmail)
     }
 }

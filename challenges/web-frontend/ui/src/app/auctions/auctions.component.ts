@@ -20,8 +20,6 @@ export class AuctionsComponent implements OnInit {
     'authtoken': `${this.authtoken}`
 }
 
-@Output() updatedUserId: EventEmitter<string> = new EventEmitter<string>();
-
   constructor(private auctionService: AuctionService) { }
 
   ngOnInit(): void {
@@ -30,18 +28,19 @@ export class AuctionsComponent implements OnInit {
     }
     console.log(this.userId);
     localStorage.setItem('userId', this.userId);
-    this.updatedUserId.emit(this.userId);
 
-    this.auctionService.getAuctions(this.auctionsUrl, this.httpOptions).subscribe(auctions => {
-      // console.log(auctions);
-      if(auctions.items) {
-        this.auctions = auctions.items;
-      } else {
-        // console.log(auctions);
-        this.getAuctionsError = 'Auctions not found, try again'
-      }
-      return;
-    });
+    if(!this.userId) {
+      this.getAuctionsError = 'Login required';
+    } else {
+        this.auctionService.getAuctions(this.auctionsUrl, this.httpOptions).subscribe(auctions => {
+          if(auctions.items) {
+          this.auctions = auctions.items;
+        } else {
+          this.getAuctionsError = 'Auctions not found, try again'
+        }
+        return;
+      });
+    }
   }
 
 }

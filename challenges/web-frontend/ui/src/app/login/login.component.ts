@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,7 @@ export class LoginComponent implements OnInit {
   passwordMissingInput = ''
   loginError = ''
 
-  // @Output() updatedUserId: EventEmitter<string> = new EventEmitter<string>();
-
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private state: StateService) { }
 
   ngOnInit(): void {
   }
@@ -30,8 +29,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem('userId', this.email);
               localStorage.setItem('authtoken', auth.token);
 
-              // this.updatedUserId.emit(this.email);
-              console.log(this.email)
+              this.state.sendUpdate(this.email);
 
               this.router.navigate(['auctions'])
             } else {
