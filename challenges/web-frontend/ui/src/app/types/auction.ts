@@ -12,4 +12,5 @@ export class Auction {
     currentHighestBidValue!: number;
     endingTime!: string;
     remainingTimeInSeconds!: number;
+    amIHighestBidder: boolean | undefined
 }

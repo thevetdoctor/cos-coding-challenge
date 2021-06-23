@@ -5,12 +5,6 @@ import { Auction } from './types/auction';
 import { baseUrl } from './utils';
 import { catchError } from 'rxjs/operators';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -24,8 +18,8 @@ export class AuctionService {
     
   constructor(private http:HttpClient) { }
 
-  getAuctions(auctionsUrl:string):Observable<any> {
-    return this.http.get(`${this.baseUrl}/${auctionsUrl}`, httpOptions)
+  getAuctions(auctionsUrl:string, httpOptions: any):Observable<any> {
+    return this.http.get(`${this.baseUrl}/v2/${auctionsUrl}`, { headers: httpOptions })
                     .pipe(catchError(this.handleError));
 
   }

@@ -3,12 +3,27 @@
     Welcome to CarOnSale...
   </h2>
   <nav>
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}">Home</a>
-    <a routerLink="/login"  routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-      true}">Login</a>
-    <!-- <a routerLink="/auctions" routerLinkActive="active">Auctions</a> -->
+    <a 
+      routerLink="/" 
+      routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact:
+        true}"
+    >
+      Home
+    </a>
+    <a 
+      routerLink="/login"  
+      routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact:
+      true}"
+      (click)="clearCache()"
+    > 
+      {{ userID ? 'Logout' : 'Login' }}
+    </a>
   </nav>
+  {{userEmail}}
+  <span (updatedUserId)="onUpdateUserId($event)"></span>
   <p>Everything you need on automobiles</p>
+  <p class="user-id"> {{ userID ? 'Your Email:' : '' }} {{ userID }} </p>
   <router-outlet></router-outlet>
 </div>

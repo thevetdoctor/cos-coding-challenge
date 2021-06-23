@@ -7,4 +7,24 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ui';
+  userID:string = window.localStorage.getItem('userId') || '';
+  userEmail:string = '';
+
+  constructor() { }
+  
+  ngOnInit(): void {
+    this.userID = window.localStorage.getItem('userId') || '';
+    console.log(this.userID);
+  }
+
+    clearCache() {
+      window.localStorage.clear();
+      this.userID = '';
+    }
+
+    onUpdateUserId(userID:any): void {
+      this.userEmail = userID;
+      this.ngOnInit();
+      console.log(this.userEmail)
+    }
 }
