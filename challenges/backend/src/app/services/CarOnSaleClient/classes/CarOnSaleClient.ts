@@ -60,7 +60,7 @@ export class CarOnSaleClient implements ICarOnSaleClient {
                 currentHighestBidValue: item.currentHighestBidValue,
                 averageAuctionProgressInPercent: (item.currentHighestBidValue / item.minimumRequiredAsk) * 100
             }));
-            console.log({ numberOfAuctions: result.auctions.length, auctions: trimmedAuctions });
+            // console.log({ numberOfAuctions: result.auctions.length, auctions: trimmedAuctions });
             return { numberOfAuctions: result.auctions.length, auctions: trimmedAuctions };
         } else {
             // WHen the response has an error property

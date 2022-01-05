@@ -1,6 +1,8 @@
 import { server } from '../app/server';
 import request from 'supertest';
 import { expect } from 'chai';
+import { describe } from 'mocha';
+
 // Import the AuctionMonitorApp for testing purpose
 import { app } from '../app/main';
 
