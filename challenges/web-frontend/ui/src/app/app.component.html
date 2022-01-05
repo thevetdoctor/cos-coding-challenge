@@ -1,0 +1,35 @@
+<div>
+  <h2>
+    Welcome to CarOnSale...
+  </h2>
+  <nav>
+    <a 
+      routerLink="/" 
+      routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact:
+        true}"
+    >
+      Home
+    </a>
+    <a 
+      routerLink="/auctions" 
+      routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact:
+        true}"
+    >
+      Auctions
+    </a>
+    <a 
+      routerLink="/login"  
+      routerLinkActive="active" 
+      [routerLinkActiveOptions]="{exact:
+      true}"
+      (click)="clearCache()"
+    > 
+      {{ userID ? 'Logout' : 'Login' }}
+    </a>
+  </nav>
+  <p>Everything you need on automobiles</p>
+  <p class="user-id"> {{ userID ? 'Your Email:' : '' }} {{ userID }} </p>
+  <router-outlet></router-outlet>
+</div>
